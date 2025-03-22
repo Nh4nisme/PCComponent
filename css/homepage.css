@@ -1,0 +1,12 @@
+.card img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover img {
+    transform: translateY(-10px);
+}
+
+.card:hover .card-text {
+    color: #007bff;
+    transition: color 0.3s ease-in-out;
+}

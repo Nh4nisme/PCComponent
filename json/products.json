@@ -1,0 +1,104 @@
+[
+    {
+        "name": "Lenovo LOQ 15IRH8",
+        "price": "899.99$",
+        "image": "../img/products/lap1.png",
+        "type": "Gaming Laptop"
+    },
+    {
+        "name": "Lenovo Legion 5 Pro 16ACH6H",
+        "price": "1499.99$",
+        "image": "../img/products/lap2.png",
+        "type": "Gaming Laptop"
+    },
+    {
+        "name": "Asus ROG Strix G16 (2023)",
+        "price": "1599.99$",
+        "image": "../img/products/lap1.png"
+    },
+    {
+        "name": "Asus TUF Gaming A15",
+        "price": "1099.99$",
+        "image": "../img/products/lap1.png"
+    },
+    {
+        "name": "Dell G15 5520",
+        "price": "999.99$",
+        "image": "../img/products/lap1.png"
+    },
+    {
+        "name": "Dell Alienware x16",
+        "price": "2499.99$",
+        "image": "../img/products/lap1.png"
+    },
+    {
+        "name": "MSI Katana 15 B12V",
+        "price": "1299.99$",
+        "image": "../img/products/lap1.png"
+    },
+    {
+        "name": "MSI Raider GE78 HX",
+        "price": "2799.99$",
+        "image": "../img/products/lap1.png"
+    },
+    {
+        "name": "Acer Nitro 5 AN515-58",
+        "price": "1149.99$",
+        "image": "../img/products/lap1.png"
+    },
+    {
+        "name": "Acer Predator Helios 16 PH16-71",
+        "price": "1999.99$",
+        "image": "../img/products/lap1.png"
+    },
+    {
+        "name": "HP Omen 16 (2023)",
+        "price": "1599.99$",
+        "image": "../img/products/lap1.png"
+    },
+    {
+        "name": "HP Victus 15",
+        "price": "799.99$",
+        "image": "../img/products/lap1.png"
+    },
+    {
+        "name": "Gigabyte Aorus 15X (2023)",
+        "price": "1899.99$",
+        "image": "gigabyte_aorus_15x.jpg"
+    },
+    {
+        "name": "Razer Blade 15 (2023)",
+        "price": "2299.99$",
+        "image": "razer_blade_15.jpg"
+    },
+    {
+        "name": "Razer Blade 16 (2024)",
+        "price": "2999.99$",
+        "image": "razer_blade_16.jpg"
+    },
+    {
+        "name": "MacBook Pro 16-inch M3 Max",
+        "price": "3499.99$",
+        "image": "macbook_pro_16_m3_max.jpg"
+    },
+    {
+        "name": "Asus ZenBook 14 OLED",
+        "price": "1099.99$",
+        "image": "asus_zenbook_14_oled.jpg"
+    },
+    {
+        "name": "Lenovo ThinkPad X1 Carbon Gen 11",
+        "price": "1899.99$",
+        "image": "thinkpad_x1_carbon.jpg"
+    },
+    {
+        "name": "Samsung Galaxy Book3 Ultra",
+        "price": "1799.99$",
+        "image": "samsung_galaxy_book3_ultra.jpg"
+    },
+    {
+        "name": "Microsoft Surface Laptop 5",
+        "price": "1299.99$",
+        "image": "surface_laptop_5.jpg"
+    }
+]
