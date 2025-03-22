@@ -1,0 +1,24 @@
+.main-header {
+    height: 100%;
+}
+
+.sidebar-menu {
+    width: fit-content;
+    background-color: #2E2E2E;
+}
+
+.sidebar-menu ul li:hover {
+    background-color: rgb(134, 133, 133, 0.5);
+}
+
+.sidebar-expand {
+    display: none;  /* Ẩn menu ban đầu */
+    position: absolute;
+    left: 250px; /* Điều chỉnh vị trí theo thiết kế */
+    top: 100px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 300px;
+    z-index: 100;
+}

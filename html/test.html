@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expandable Menu</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        /* 🌟 [1] Thiết lập chung */
+        body {
+            background-color: #f8f9fa;
+        }
+        .menu-container {
+            display: flex;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        /* 📌 [2] Menu dọc */
+        .sidebar {
+            width: 200px;
+            background-color: #343a40;
+            color: white;
+            min-height: 100vh;
+            padding-top: 20px;
+        }
+
+        /* 📌 [3] Mục trong menu */
+        .menu-item {
+            padding: 15px;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .menu-item:hover {
+            background-color: #495057;
+        }
+
+        /* 📌 [4] Phần mở rộng (submenu) */
+        .submenu-container {
+            width: 300px;
+            background: #212529;
+            color: white;
+            padding: 20px;
+            min-height: 150px;
+            display: none; /* Mặc định ẩn */
+            position: absolute;
+            left: 200px;
+            top: 0;
+            border-radius: 5px;
+        }
+        
+        .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.col-3 {
+    width: 23%;
+    background: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.col-3 span {
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.text-danger {
+    color: #dc3545 !important;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 16px;
+    transition: color 0.3s ease-in-out;
+}
+
+ul li a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+    </style>
+</head>
+<body>
+
+<!-- 🔥 [5] Menu chính -->
+<div class="menu-container">
+    <!-- 📌 [6] Thanh menu dọc -->
+    <div class="sidebar">
+        <ul class="list-unstyled d-flex flex-column gap-1">
+            <li id="laptop-menu" class="d-flex gap-5 p-2 rounded-3 menu-item" data-content="laptop">
+                <a href="#Laptop" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
+                    <img src="../icons/sidebar-menu/badge.svg" alt="laptop-icon">
+                    <span class="ms-2">Laptop</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+    <!-- 📌 [7] Submenu mở rộng -->
+    <div class="submenu-container">
+        <div id="submenu-content">
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        /* 🌟 [8] Dữ liệu hiển thị trong submenu */
+        const data = {
+    laptop: `
+        <div class="row">
+            <div class="col-3">
+                <span class="text-danger">Brand</span>
+                <ul>
+                    <li><a href="#Acer">Acer</a></li>
+                    <li><a href="#Asus">Asus</a></li>
+                    <li><a href="#Dell">Dell</a></li>
+                    <li><a href="#HP">HP</a></li>
+                    <li><a href="#Lenovo">Lenovo</a></li>
+                    <li><a href="#MSI">MSI</a></li>
+                    <li><a href="#GIGABYTE">GIGABYTE</a></li>
+                    <li><a href="#LGGram">LG Gram</a></li>
+                </ul>                                        
+            </div>
+            <div class="col-3">
+                <span class="">Price Range</span>
+                <ul>
+                    <li><a href="#">Under $500</a></li>
+                    <li><a href="#">$500 - $1000</a></li>
+                    <li><a href="#">$1000 - $2000</a></li>
+                    <li><a href="#">Above $2000</a></li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <span class="">Usage</span>
+                <ul>
+                    <li><a href="#">Gaming</a></li>
+                    <li><a href="#">Workstation</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Student</a></li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <span class="">Features</span>
+                <ul>
+                    <li><a href="#">Touchscreen</a></li>
+                    <li><a href="#">2-in-1 Convertible</a></li>
+                    <li><a href="#">High Refresh Rate</a></li>
+                </ul>
+            </div>
+        </div>
+    `,
+    pc: `
+        <p><strong>Brand:</strong> Lenovo, MSI</p>
+        <p><strong>Price:</strong> $400 - $1500</p>
+        <ul>
+            <li><a href="#">Gaming PC</a></li>
+            <li><a href="#">Workstation</a></li>
+            <li><a href="#">Mini PC</a></li>
+        </ul>
+    `
+};
+
+
+        let isInsideMenu = false; // Kiểm tra chuột có đang trong menu không
+
+        /* 📌 [9] Khi hover vào menu-item => Hiện submenu & đổi nội dung */
+        $(".menu-item").mouseenter(function () {
+            let key = $(this).data("content"); // Lấy tên danh mục
+            $("#submenu-content").html(data[key]); // Cập nhật nội dung submenu
+            $(".submenu-container").fadeIn(200); // Hiển thị submenu
+        });
+
+        /* 📌 [10] Khi di chuột vào sidebar hoặc submenu => Không ẩn */
+        $(".sidebar, .submenu-container").mouseenter(function () {
+            isInsideMenu = true;
+        });
+
+        /* 📌 [11] Khi rời cả sidebar + submenu => Ẩn submenu */
+        $(".sidebar, .submenu-container").mouseleave(function () {
+            isInsideMenu = false;
+            setTimeout(function () {
+                if (!isInsideMenu) {
+                    $(".submenu-container").fadeOut(200);
+                }
+            }, 200);
+        });
+    });
+</script>
+
+</body>
+</html>

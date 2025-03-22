@@ -1,0 +1,82 @@
+.white-panel {
+    background-color: white;
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.white-panel.dark-mode {
+    background-color: rgb(50, 50, 50);
+    color: white;
+}
+
+.optional {
+    color: gray;
+    font-weight: 300;
+}
+
+.default-link {
+    color: rgb(191,0,0);
+}
+
+.default-link:hover {
+    color: rgb(100, 0, 0);
+}
+
+.default-red-button {
+    padding: 15px;
+    background: rgb(191,0,0);
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.default-red-button:hover {
+    background: rgb(90,0,0);
+    cursor: pointer;
+}
+
+.sidepanel {
+    background-color: rgb(237,239,246);
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidepanel.dark-mode {
+    background-color: rgb(50, 50, 50);
+    color: white;
+}
+
+.follow-us button {
+    padding-top: 3px;
+    padding-bottom: 5px;
+    padding-right: 6px;
+    padding-left: 7px;
+    margin-right: 5px;
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+
+    transition: transform 0.3s ease;
+}
+
+.follow-us button:hover {
+    background-color: rgb(200, 200, 200);
+    transform: scale(1.2) rotate(30deg);
+}
+
+.follow-us button img {
+    width: 20px;
+    height: 20px;
+}
+
+.google-map-frame iframe {
+    object-fit: cover;
+    width: 100%;
+    height: 300px;
+}
+
+@media (max-width: 1000px) {
+    .sidepanel {
+        margin-top: 5%;
+    }
+}
