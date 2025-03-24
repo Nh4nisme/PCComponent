@@ -14,42 +14,42 @@
     {
         "name": "Asus ROG Strix G16 (2023)",
         "price": "1599.99$",
-        "image": "../img/products/lap1.png"
+        "image": "../img/products/lap3.png"
     },
     {
-        "name": "Asus TUF Gaming A15",
+        "name": "MSI Gaming GS63VR 7RF",
         "price": "1099.99$",
-        "image": "../img/products/lap1.png"
+        "image": "../img/products/lap4.png"
     },
     {
         "name": "Dell G15 5520",
         "price": "999.99$",
-        "image": "../img/products/lap1.png"
+        "image": "../img/products/lap5.png"
     },
     {
         "name": "Dell Alienware x16",
         "price": "2499.99$",
-        "image": "../img/products/lap1.png"
+        "image": "../img/products/lap6.png"
     },
     {
-        "name": "MSI Katana 15 B12V",
+        "name": "MacBook Air Pro 13 inch",
         "price": "1299.99$",
-        "image": "../img/products/lap1.png"
+        "image": "../img/products/lap7.png"
     },
     {
-        "name": "MSI Raider GE78 HX",
+        "name": "iMac MacBook Pro Apple",
         "price": "2799.99$",
-        "image": "../img/products/lap1.png"
+        "image": "../img/products/lap8.png"
     },
     {
-        "name": "Acer Nitro 5 AN515-58",
+        "name": "Laptop Lenovo Legion Y520",
         "price": "1149.99$",
-        "image": "../img/products/lap1.png"
+        "image": "../img/products/lap9.png"
     },
     {
-        "name": "Acer Predator Helios 16 PH16-71",
+        "name": "Laptop Lenovo Z50-70",
         "price": "1999.99$",
-        "image": "../img/products/lap1.png"
+        "image": "../img/products/lap10.png"
     },
     {
         "name": "HP Omen 16 (2023)",
