@@ -6,10 +6,11 @@
     <link rel="stylesheet" href="../lib/bootstrap.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/products.css">
+    <script src="../lib/jquery.js"></script>
     <title>PC Components</title>
 </head>
 <body>
-    <div class = "master-container-red">
+    <div class = "d-flex flex-column master-container-red">
         <!-- MAIN.CSS HEADER -->
         <header>
             <div class="pre-nav"> 
@@ -38,118 +39,609 @@
                 </div> 
             </div>
             
-            <nav class="navbar navbar-expand-lg bg-dark">
+            <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
                     <div class="d-flex align-items-center">
-                        <button class="navbar-toggler me-2 d-lg-none align-content-start w-100" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links">
+                        <button class="navbar-toggler me-2 d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="logo">NexST</div>
                     </div>
-                    
-                    <div class="collapse navbar-collapse" id="nav-links">
-                        <form class="d-flex mx-auto " role="search">
-                            <div class="input-group">
-                                <button class="icon-search-btn"><img class="input-group-text bg-white" src="../icons/nav/search.svg" alt=""></button>
-                                <input class="form-control" type="search" placeholder="Search..." aria-label="Search">
-                            </div>
-                        </form>
-                    </div>                                
+
+                    <div class="search-container">
+                    <div class="search-box">
+                        <img src="../icons/nav/search.svg" alt="search" class="search-icon">
+                        <input type="text" class="search-input" placeholder="">
+                        <span class="placeholder-text"></span>
+                    </div>
+                    </div>
                     
                     <div class="nav-button">
                         <button class="btn btn-light d-flex">
                             <img src="../icons/nav/user.svg" alt="" class="me-1">
                             <span class="d-none d-sm-inline">Login</span>
                         </button>
+                        <button class="btn btn-light search-toggle d-lg-none">
+                            <img src="../icons/nav/search.svg" alt="search">
+                        </button>
                         <button class="btn btn-light"><img src="../icons/nav/shopping-cart.svg" alt=""></button>
-                        <button class="btn btn-light" id="darkModeToggle"><img id="modeIcon" src="../icons/nav/dark-mode.svg" alt=""></button>
+                        <button class="btn btn-light"><img id="modeIcon" src="../icons/nav/dark-mode.svg" alt=""></button>
                         <button class="btn btn-light"><img src="../icons/nav/language-globe.svg" alt=""></button>
                     </div>
                 </div>
             </nav>
         </header>
         <!-- END OF MAIN.CSS HEADER -->
-        <main>
-            <div class="main-header d-flex pt-4 px-4 pb-5">
-                <div class="sidebar-menu ms-5 p-3 mt-5 rounded-5">
-                    <ul class="list-unstyled d-flex flex-column gap-1">
-                        <li id="laptop-menu" class="d-flex gap-5 p-2 rounded-3">
-                            <a href="#Laptop" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
-                                <img src="../icons/sidebar-menu/badge.svg" alt="laptop-icon">
-                                <span class="ms-2">Laptop</span>
-                            </a>
-                        </li>
-                        <li class="p-2 rounded-3">
-                            <a href="#PC" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
-                                <img src="../icons/sidebar-menu/pc.svg" alt="pc-icon">
-                                <span class="ms-2">PC - Desktop Computers</span>
-                            </a>
-                        </li>
-                        <li class="p-2 rounded-3">
-                            <a href="#ComputerMonitor" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
-                                <img src="../icons/sidebar-menu/monitor.svg" alt="monitor-icon">
-                                <span class="ms-2">Computer Monitors</span>
-                            </a>
-                        </li>
-                        <li class="p-2 rounded-3">
-                            <a href="#ComputerComponent" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
-                                <img src="../icons/sidebar-menu/component.svg" alt="component-icon">
-                                <span class="ms-2">Computer Components</span>
-                            </a>
-                        </li>
-                        <li class="p-2 rounded-3">
-                            <a href="#Gear" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
-                                <img src="../icons/sidebar-menu/gear.svg" alt="gear-icon">
-                                <span class="ms-2">Gaming Gear</span>
-                            </a>
-                        </li>
-                        <li class="p-2 rounded-3">
-                            <a href="#Accessories" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
-                                <img src="../icons/sidebar-menu/accessories.svg" alt="accessories-icon">
-                                <span class="ms-2">Accessories</span>
-                            </a>
-                        </li>
-                        <li class="p-2 rounded-3">
-                            <a href="#AudioDevices" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
-                                <img src="../icons/sidebar-menu/Audio.svg" alt="audio-icon">
-                                <span class="ms-2">Audio Devices</span>
-                            </a>
-                        </li>
-                        <li class="p-2 rounded-3">
-                            <a href="#Office" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
-                                <img src="../icons/sidebar-menu/office.svg" alt="office-icon">
-                                <span class="ms-2">Office Equipment</span>
-                            </a>
-                        </li>
-                        <li class="p-2 rounded-3">
-                            <a href="#Business" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
-                                <img src="../icons/sidebar-menu/business.svg" alt="business-icon">
-                                <span class="ms-2">Business Solutions</span>
-                            </a>
-                        </li>
-                    </ul>                                        
+        <main class="flex-grow-1">
+                <div class="horizontal-menu d-flex w-100 d-none">
+                    <ul class="list-unstyled d-flex flex-nowrap">
+                        <li class="me-3"><a href="#">Laptop</a></li>
+                        <li class="me-3"><a href="#">PC - Desktop Computers</a></li>
+                        <li class="me-3"><a href="#">Computer Monitors</a></li>
+                        <li class="me-3"><a href="#">Computer Components</a></li>
+                        <li class="me-3"><a href="#">Gaming Gear</a></li>
+                        <li class="me-3"><a href="#">Accessories</a></li>
+                        <li class="me-3"><a href="#">Audio Devices</a></li>
+                        <li class="me-3"><a href="#">Office Equipment</a></li>
+                        <li><a href="#">Business Solutions</a></li>
+                    </ul>
                 </div>
-                <div class="sidebar-expand">
-                    <div class="row">
-                        <div class="col-3">
-                            <span class="">Brand</span>
-                            <ul>
-                                <li><a href="#Acer">Acer</a></li>
-                                <li><a href="#Asus">Asus</a></li>
-                                <li><a href="#Dell">Dell</a></li>
-                                <li><a href="#HP">HP</a></li>
-                                <li><a href="#Lenovo">Lenovo</a></li>
-                                <li><a href="#MSI">MSI</a></li>
-                                <li><a href="#GIGABYTE">GIGABYTE</a></li>
-                                <li><a href="#LGGram">LG Gram</a></li>
-                            </ul>                                        
+
+                <div class="container">
+                    <div class="main-header d-flex mt-5 mb-5 pb-2">        
+                        <div class="sidebar-menu p-3 rounded-5">
+                            <ul class="list-unstyled d-flex flex-column gap-1">
+                                <li id="laptop-menu" class="menu-item d-flex gap-5 p-2 rounded-3" data-content="laptop">
+                                    <a href="#Laptop" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
+                                        <img src="../icons/sidebar-menu/badge.svg" alt="laptop-icon">
+                                        <span class="ms-2">Laptop</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item d-flex gap-5 p-2 rounded-3" data-content="pc">
+                                    <a href="#PC" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
+                                        <img src="../icons/sidebar-menu/pc.svg" alt="pc-icon">
+                                        <span class="ms-2">PC - Desktop Computers</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item d-flex gap-5 p-2 rounded-3" data-content="monitor">
+                                    <a href="#ComputerMonitor" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
+                                        <img src="../icons/sidebar-menu/monitor.svg" alt="monitor-icon">
+                                        <span class="ms-2">Computer Monitors</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item d-flex gap-5 p-2 rounded-3" data-content="component">
+                                    <a href="#ComputerComponent" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
+                                        <img src="../icons/sidebar-menu/component.svg" alt="component-icon">
+                                        <span class="ms-2">Computer Components</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item d-flex gap-5 p-2 rounded-3" data-content="gear">
+                                    <a href="#Gear" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
+                                        <img src="../icons/sidebar-menu/gear.svg" alt="gear-icon">
+                                        <span class="ms-2">Gaming Gear</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item d-flex gap-5 p-2 rounded-3" data-content="accessories">
+                                    <a href="#Accessories" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
+                                        <img src="../icons/sidebar-menu/accessories.svg" alt="accessories-icon">
+                                        <span class="ms-2">Accessories</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item d-flex gap-5 p-2 rounded-3" data-content="audio">
+                                    <a href="#AudioDevices" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
+                                        <img src="../icons/sidebar-menu/Audio.svg" alt="audio-icon">
+                                        <span class="ms-2">Audio Devices</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item d-flex gap-5 p-2 rounded-3" data-content="office">
+                                    <a href="#Office" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
+                                        <img src="../icons/sidebar-menu/office.svg" alt="office-icon">
+                                        <span class="ms-2">Office Equipment</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item d-flex gap-5 p-2 rounded-3" data-content="business">
+                                    <a href="#Business" class="d-flex text-white text-decoration-none flex-nowrap align-items-center">
+                                        <img src="../icons/sidebar-menu/business.svg" alt="business-icon">
+                                        <span class="ms-2">Business Solutions</span>
+                                    </a>
+                                </li>
+                            </ul>                                                           
+                        </div> 
+
+                        <div class="submenu-container p-3 rounded-5">
+                            <div id="submenu-content">                                                                                       
+                            </div>
                         </div>
-                        <div class="col-3"></div>
-                        <div class="col-3"></div>
-                        <div class="col-3"></div>
+
+                        <div class="main-header-img my-auto mx-auto"><img src="../images/products/section.svg" class="img-fluid rounded-5" alt="adsmain"></div>
                     </div>
                 </div>
-            </div>
+
+                <div class="hot-offers bg-white py-4" style="width: 100%;">
+                        <div class="container">
+                            <div class="top-offers">
+                                <span class="fw-bold fs-4">Popular Searches</span>
+                                <hr>
+                            </div>
+                            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3">
+                                <div class="col">
+                                    <div class="products-offers shadow p-2 h-100 d-flex flex-column justify-content-between">
+                                        <img src="../images/products/image 1.svg" class="img-fluid" alt="">
+                                        <div class="products-offers-name"><p>NVIDIA GeForce RTX 4090</p></div>
+                                        <div class="products-offers-price d-flex justify-content-between align-items-center">
+                                            <span class="fw-semibold">998$ <del class="text-secondary fw-normal">1200$</del></span>
+                                            <button class="products-offers-cart btn btn-sm btn-dark border-0"><img src="../icons/hot offers/badge.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="col">
+                                    <div class="products-offers shadow p-2 h-100 d-flex flex-column justify-content-between">
+                                        <img src="../images/products/image 3.svg" class="img-fluid" alt="">
+                                        <div class="products-offers-name"><p>PC ASUS Blackwell</p></div>
+                                        <div class="products-offers-price d-flex justify-content-between align-items-center">
+                                            <span class="fw-semibold">998$ <del class="text-secondary fw-normal">1200$</del></span>
+                                            <button class="products-offers-cart btn btn-sm btn-dark border-0"><img src="../icons/hot offers/badge.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="col">
+                                    <div class="products-offers shadow p-2 h-100 d-flex flex-column justify-content-between">
+                                        <img src="../images/products/image 2.svg" class="img-fluid" alt="">
+                                        <div class="products-offers-name"><p>Steelseries Aerox 3 Wireless Snow Edition</p></div>
+                                        <div class="products-offers-price d-flex justify-content-between align-items-center">
+                                            <span class="fw-semibold">998$ <del class="text-secondary fw-normal">1200$</del></span>
+                                            <button class="products-offers-cart btn btn-sm btn-dark border-0"><img src="../icons/hot offers/badge.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="col">
+                                    <div class="products-offers shadow p-2 h-100 d-flex flex-column justify-content-between">
+                                        <img src="../images/products/image 1.svg" class="img-fluid" alt="">
+                                        <div class="products-offers-name"><p>NVIDIA GeForce RTX 4090</p></div>
+                                        <div class="products-offers-price d-flex justify-content-between align-items-center">
+                                            <span class="fw-semibold">998$ <del class="text-secondary fw-normal">1200$</del></span>
+                                            <button class="products-offers-cart btn btn-sm btn-dark border-0"><img src="../icons/hot offers/badge.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="col">
+                                    <div class="products-offers shadow p-2 h-100 d-flex flex-column justify-content-between">
+                                        <img src="../images/products/image 1.svg" class="img-fluid" alt="">
+                                        <div class="products-offers-name"><p>NVIDIA GeForce RTX 4090</p></div>
+                                        <div class="products-offers-price d-flex justify-content-between align-items-center">
+                                            <span class="fw-semibold">998$ <del class="text-secondary fw-normal">1200$</del></span>
+                                            <button class="products-offers-cart btn btn-sm btn-dark border-0"><img src="../icons/hot offers/badge.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="main-banners">
+                    <img src="../images/products/banner ads.svg" class="img-fluid w-100" alt="Banner">
+                </div>
+
+                <div class="bg-white py-4">
+                    <div class="container container-banner-panel p-0 rounded-3">
+                        <div class="tab-btn-container d-flex w-100 flex-nowrap overflow-auto">
+                            <div class="flex-grow-1"><button class="tab-btn w-100 active fw-bold" onclick="openTab(event, 'tab1')">LAPTOP GAMING</button></div>
+                            <div class="flex-grow-1"><button class="tab-btn w-100 fw-bold" onclick="openTab(event, 'tab2')">LAPTOP AI</button></div>
+                            <div class="flex-grow-1"><button class="tab-btn w-100 fw-bold" onclick="openTab(event, 'tab3')">LAPTOP OFFICE</button></div>
+                            <div class="flex-grow-1"><button class="tab-btn w-100 fw-bold" onclick="openTab(event, 'tab4')">LAPTOP STUDENT</button></div>
+                            <div class="flex-grow-1"><button class="tab-btn w-100 fw-bold" onclick="openTab(event, 'tab5')">LAPTOP GRAPHICS</button></div>
+                        </div>
+                    
+                        <div id="tab1" class="tab-content active">
+                            <div class="products-tab-content d-flex w-100 flex-nowrap overflow-auto gap-3">
+                                <div class="col">
+                                    <div class="card products-tab-content-card shadow h-100 border-0 rounded-4">
+                                        <img src="../images/products/katana.svg" class="card-img-top p-2" alt="MSI Cyborg 15">
+                                        <div class="card-body d-flex flex-column justify-content-between" style="font-size: 14px;">
+                                            <div class="mb-5">
+                                                <h6 class="card-title fw-bold mb-0">MSI</h6>
+                                                <p class="card-text mb-0">Laptop gaming MSI Cyborg 15 A13UC-861VN</p>
+                                                <div class="">
+                                                    <span class="fw-semibold">998$</span>
+                                                    <del class="text-secondary fw-normal">1200$</del>
+                                                </div>
+                                                <div class="products-card-details d-flex flex-column rounded-4 p-2" style="font-size: 11px;">
+                                                    <div class="cpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/badge.svg" alt="cpu">
+                                                        <span>i5-13420H</span>
+                                                    </div>
+                                                    <div class="gpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/gpu.svg" alt="gpu">
+                                                        <span>Geforce RTX 3050</span>
+                                                    </div>
+                                                    <div class="ram-ssd d-flex gap-2">
+                                                        <img src="../icons/products-card-details/ram.svg" alt="ram">
+                                                        <span>16GB</span>
+                                                        <img src="../icons/products-card-details/ssd.svg" alt="ssd">
+                                                        <span>512GB</span>
+                                                    </div>
+                                                    <div class="screensize d-flex gap-2">
+                                                        <img src="../icons/products-card-details/screensize.svg" alt="screensize">
+                                                        <span>15.6" Full HD / IPS / 144hz</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="btn rounded-3 d-flex align-items-center end-0">
+                                                <span class="mx-auto">Add To Basket</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="col">
+                                    <div class="card products-tab-content-card shadow h-100 border-0 rounded-4">
+                                        <img src="../images/products/katana.svg" class="card-img-top p-2" alt="MSI Cyborg 15">
+                                        <div class="card-body d-flex flex-column justify-content-between" style="font-size: 14px;">
+                                            <div class="mb-5">
+                                                <h6 class="card-title fw-bold mb-0">MSI</h6>
+                                                <p class="card-text mb-0">Laptop gaming MSI Cyborg 15 A13UC-861VN</p>
+                                                <div class="">
+                                                    <span class="fw-semibold">998$</span>
+                                                    <del class="text-secondary fw-normal">1200$</del>
+                                                </div>
+                                                <div class="products-card-details d-flex flex-column rounded-4 p-2" style="font-size: 11px;">
+                                                    <div class="cpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/badge.svg" alt="cpu">
+                                                        <span>i5-13420H</span>
+                                                    </div>
+                                                    <div class="gpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/gpu.svg" alt="gpu">
+                                                        <span>Geforce RTX 3050</span>
+                                                    </div>
+                                                    <div class="ram-ssd d-flex gap-2">
+                                                        <img src="../icons/products-card-details/ram.svg" alt="ram">
+                                                        <span>16GB</span>
+                                                        <img src="../icons/products-card-details/ssd.svg" alt="ssd">
+                                                        <span>512GB</span>
+                                                    </div>
+                                                    <div class="screensize d-flex gap-2">
+                                                        <img src="../icons/products-card-details/screensize.svg" alt="screensize">
+                                                        <span>15.6" Full HD / IPS / 144hz</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="btn rounded-3 d-flex align-items-center end-0">
+                                                <span class="mx-auto">Add To Basket</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="col">
+                                    <div class="card products-tab-content-card shadow h-100 border-0 rounded-4">
+                                        <img src="../images/products/katana.svg" class="card-img-top p-2" alt="MSI Cyborg 15">
+                                        <div class="card-body d-flex flex-column justify-content-between" style="font-size: 14px;">
+                                            <div class="mb-5">
+                                                <h6 class="card-title fw-bold mb-0">MSI</h6>
+                                                <p class="card-text mb-0">Laptop gaming MSI Cyborg 15 A13UC-861VN</p>
+                                                <div class="">
+                                                    <span class="fw-semibold">998$</span>
+                                                    <del class="text-secondary fw-normal">1200$</del>
+                                                </div>
+                                                <div class="products-card-details d-flex flex-column rounded-4 p-2" style="font-size: 11px;">
+                                                    <div class="cpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/badge.svg" alt="cpu">
+                                                        <span>i5-13420H</span>
+                                                    </div>
+                                                    <div class="gpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/gpu.svg" alt="gpu">
+                                                        <span>Geforce RTX 3050</span>
+                                                    </div>
+                                                    <div class="ram-ssd d-flex gap-2">
+                                                        <img src="../icons/products-card-details/ram.svg" alt="ram">
+                                                        <span>16GB</span>
+                                                        <img src="../icons/products-card-details/ssd.svg" alt="ssd">
+                                                        <span>512GB</span>
+                                                    </div>
+                                                    <div class="screensize d-flex gap-2">
+                                                        <img src="../icons/products-card-details/screensize.svg" alt="screensize">
+                                                        <span>15.6" Full HD / IPS / 144hz</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="btn rounded-3 d-flex align-items-center end-0">
+                                                <span class="mx-auto">Add To Basket</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="col">
+                                    <div class="card products-tab-content-card shadow h-100 border-0 rounded-4">
+                                        <img src="../images/products/katana.svg" class="card-img-top p-2" alt="MSI Cyborg 15">
+                                        <div class="card-body d-flex flex-column justify-content-between" style="font-size: 14px;">
+                                            <div class="mb-5">
+                                                <h6 class="card-title fw-bold mb-0">MSI</h6>
+                                                <p class="card-text mb-0">Laptop gaming MSI Cyborg 15 A13UC-861VN</p>
+                                                <div class="">
+                                                    <span class="fw-semibold">998$</span>
+                                                    <del class="text-secondary fw-normal">1200$</del>
+                                                </div>
+                                                <div class="products-card-details d-flex flex-column rounded-4 p-2" style="font-size: 11px;">
+                                                    <div class="cpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/badge.svg" alt="cpu">
+                                                        <span>i5-13420H</span>
+                                                    </div>
+                                                    <div class="gpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/gpu.svg" alt="gpu">
+                                                        <span>Geforce RTX 3050</span>
+                                                    </div>
+                                                    <div class="ram-ssd d-flex gap-2">
+                                                        <img src="../icons/products-card-details/ram.svg" alt="ram">
+                                                        <span>16GB</span>
+                                                        <img src="../icons/products-card-details/ssd.svg" alt="ssd">
+                                                        <span>512GB</span>
+                                                    </div>
+                                                    <div class="screensize d-flex gap-2">
+                                                        <img src="../icons/products-card-details/screensize.svg" alt="screensize">
+                                                        <span>15.6" Full HD / IPS / 144hz</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="btn rounded-3 d-flex align-items-center end-0">
+                                                <span class="mx-auto">Add To Basket</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="col">
+                                    <div class="card products-tab-content-card shadow h-100 border-0 rounded-4">
+                                        <img src="../images/products/katana.svg" class="card-img-top p-2" alt="MSI Cyborg 15">
+                                        <div class="card-body d-flex flex-column justify-content-between" style="font-size: 14px;">
+                                            <div class="mb-5">
+                                                <h6 class="card-title fw-bold mb-0">MSI</h6>
+                                                <p class="card-text mb-0">Laptop gaming MSI Cyborg 15 A13UC-861VN</p>
+                                                <div class="">
+                                                    <span class="fw-semibold">998$</span>
+                                                    <del class="text-secondary fw-normal">1200$</del>
+                                                </div>
+                                                <div class="products-card-details d-flex flex-column rounded-4 p-2" style="font-size: 11px;">
+                                                    <div class="cpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/badge.svg" alt="cpu">
+                                                        <span>i5-13420H</span>
+                                                    </div>
+                                                    <div class="gpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/gpu.svg" alt="gpu">
+                                                        <span>Geforce RTX 3050</span>
+                                                    </div>
+                                                    <div class="ram-ssd d-flex gap-2">
+                                                        <img src="../icons/products-card-details/ram.svg" alt="ram">
+                                                        <span>16GB</span>
+                                                        <img src="../icons/products-card-details/ssd.svg" alt="ssd">
+                                                        <span>512GB</span>
+                                                    </div>
+                                                    <div class="screensize d-flex gap-2">
+                                                        <img src="../icons/products-card-details/screensize.svg" alt="screensize">
+                                                        <span>15.6" Full HD / IPS / 144hz</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="btn rounded-3 d-flex align-items-center end-0">
+                                                <span class="mx-auto">Add To Basket</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                
+                        <div id="tab2" class="tab-content">
+                            <div class="products-tab-content d-flex w-100 flex-nowrap overflow-auto gap-3">
+                
+                                <div class="col">
+                                    <div class="card products-tab-content-card shadow h-100 border-0 rounded-4">
+                                        <img src="../images/products/ailaptop.svg" class="card-img-top p-2" alt="Acer Swift X 14">
+                                        <div class="card-body d-flex flex-column justify-content-between" style="font-size: 14px;">
+                                            <div class="mb-5">
+                                                <h6 class="card-title fw-bold mb-0">Acer</h6>
+                                                <p class="card-text mb-0">Laptop Acer Swift X 14 AI SFX14-72G-708X</p>
+                                                <div class="">
+                                                    <span class="fw-semibold">998$</span>
+                                                    <del class="text-secondary fw-normal">1200$</del>
+                                                </div>
+                                                <div class="products-card-details d-flex flex-column rounded-4 p-2" style="font-size: 11px;">
+                                                    <div class="cpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/badge.svg" alt="cpu">
+                                                        <span>U7-155H</span>
+                                                    </div>
+                                                    <div class="gpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/gpu.svg" alt="gpu">
+                                                        <span>GeForce RTX 4070</span>
+                                                    </div>
+                                                    <div class="ram-ssd d-flex gap-2">
+                                                        <img src="../icons/products-card-details/ram.svg" alt="ram">
+                                                        <span>32GB</span>
+                                                        <img src="../icons/products-card-details/ssd.svg" alt="ssd">
+                                                        <span>1TB</span>
+                                                    </div>
+                                                    <div class="screensize d-flex gap-2">
+                                                        <img src="../icons/products-card-details/screensize.svg" alt="screensize">
+                                                        <span>14.5" 2.8K / OLED / 120Hz</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="btn rounded-3 d-flex align-items-center end-0">
+                                                <span class="mx-auto">Add To Basket</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col">
+                                    <div class="card products-tab-content-card shadow h-100 border-0 rounded-4">
+                                        <img src="../images/products/ailaptop.svg" class="card-img-top p-2" alt="Acer Swift X 14">
+                                        <div class="card-body d-flex flex-column justify-content-between" style="font-size: 14px;">
+                                            <div class="mb-5">
+                                                <h6 class="card-title fw-bold mb-0">Acer</h6>
+                                                <p class="card-text mb-0">Laptop Acer Swift X 14 AI SFX14-72G-708X</p>
+                                                <div class="">
+                                                    <span class="fw-semibold">998$</span>
+                                                    <del class="text-secondary fw-normal">1200$</del>
+                                                </div>
+                                                <div class="products-card-details d-flex flex-column rounded-4 p-2" style="font-size: 11px;">
+                                                    <div class="cpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/badge.svg" alt="cpu">
+                                                        <span>U7-155H</span>
+                                                    </div>
+                                                    <div class="gpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/gpu.svg" alt="gpu">
+                                                        <span>GeForce RTX 4070</span>
+                                                    </div>
+                                                    <div class="ram-ssd d-flex gap-2">
+                                                        <img src="../icons/products-card-details/ram.svg" alt="ram">
+                                                        <span>32GB</span>
+                                                        <img src="../icons/products-card-details/ssd.svg" alt="ssd">
+                                                        <span>1TB</span>
+                                                    </div>
+                                                    <div class="screensize d-flex gap-2">
+                                                        <img src="../icons/products-card-details/screensize.svg" alt="screensize">
+                                                        <span>14.5" 2.8K / OLED / 120Hz</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="btn rounded-3 d-flex align-items-center end-0">
+                                                <span class="mx-auto">Add To Basket</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="col">
+                                    <div class="card products-tab-content-card shadow h-100 border-0 rounded-4">
+                                        <img src="../images/products/ailaptop.svg" class="card-img-top p-2" alt="Acer Swift X 14">
+                                        <div class="card-body d-flex flex-column justify-content-between" style="font-size: 14px;">
+                                            <div class="mb-5">
+                                                <h6 class="card-title fw-bold mb-0">Acer</h6>
+                                                <p class="card-text mb-0">Laptop Acer Swift X 14 AI SFX14-72G-708X</p>
+                                                <div class="">
+                                                    <span class="fw-semibold">998$</span>
+                                                    <del class="text-secondary fw-normal">1200$</del>
+                                                </div>
+                                                <div class="products-card-details d-flex flex-column rounded-4 p-2" style="font-size: 11px;">
+                                                    <div class="cpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/badge.svg" alt="cpu">
+                                                        <span>U7-155H</span>
+                                                    </div>
+                                                    <div class="gpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/gpu.svg" alt="gpu">
+                                                        <span>GeForce RTX 4070</span>
+                                                    </div>
+                                                    <div class="ram-ssd d-flex gap-2">
+                                                        <img src="../icons/products-card-details/ram.svg" alt="ram">
+                                                        <span>32GB</span>
+                                                        <img src="../icons/products-card-details/ssd.svg" alt="ssd">
+                                                        <span>1TB</span>
+                                                    </div>
+                                                    <div class="screensize d-flex gap-2">
+                                                        <img src="../icons/products-card-details/screensize.svg" alt="screensize">
+                                                        <span>14.5" 2.8K / OLED / 120Hz</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="btn rounded-3 d-flex align-items-center end-0">
+                                                <span class="mx-auto">Add To Basket</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="col">
+                                    <div class="card products-tab-content-card shadow h-100 border-0 rounded-4">
+                                        <img src="../images/products/ailaptop.svg" class="card-img-top p-2" alt="Acer Swift X 14">
+                                        <div class="card-body d-flex flex-column justify-content-between" style="font-size: 14px;">
+                                            <div class="mb-5">
+                                                <h6 class="card-title fw-bold mb-0">Acer</h6>
+                                                <p class="card-text mb-0">Laptop Acer Swift X 14 AI SFX14-72G-708X</p>
+                                                <div class="">
+                                                    <span class="fw-semibold">998$</span>
+                                                    <del class="text-secondary fw-normal">1200$</del>
+                                                </div>
+                                                <div class="products-card-details d-flex flex-column rounded-4 p-2" style="font-size: 11px;">
+                                                    <div class="cpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/badge.svg" alt="cpu">
+                                                        <span>U7-155H</span>
+                                                    </div>
+                                                    <div class="gpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/gpu.svg" alt="gpu">
+                                                        <span>GeForce RTX 4070</span>
+                                                    </div>
+                                                    <div class="ram-ssd d-flex gap-2">
+                                                        <img src="../icons/products-card-details/ram.svg" alt="ram">
+                                                        <span>32GB</span>
+                                                        <img src="../icons/products-card-details/ssd.svg" alt="ssd">
+                                                        <span>1TB</span>
+                                                    </div>
+                                                    <div class="screensize d-flex gap-2">
+                                                        <img src="../icons/products-card-details/screensize.svg" alt="screensize">
+                                                        <span>14.5" 2.8K / OLED / 120Hz</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="btn rounded-3 d-flex align-items-center end-0">
+                                                <span class="mx-auto">Add To Basket</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="col">
+                                    <div class="card products-tab-content-card shadow h-100 border-0 rounded-4">
+                                        <img src="../images/products/ailaptop.svg" class="card-img-top p-2" alt="Acer Swift X 14">
+                                        <div class="card-body d-flex flex-column justify-content-between" style="font-size: 14px;">
+                                            <div class="mb-5">
+                                                <h6 class="card-title fw-bold mb-0">Acer</h6>
+                                                <p class="card-text mb-0">Laptop Acer Swift X 14 AI SFX14-72G-708X</p>
+                                                <div class="">
+                                                    <span class="fw-semibold">998$</span>
+                                                    <del class="text-secondary fw-normal">1200$</del>
+                                                </div>
+                                                <div class="products-card-details d-flex flex-column rounded-4 p-2" style="font-size: 11px;">
+                                                    <div class="cpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/badge.svg" alt="cpu">
+                                                        <span>U7-155H</span>
+                                                    </div>
+                                                    <div class="gpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/gpu.svg" alt="gpu">
+                                                        <span>GeForce RTX 4070</span>
+                                                    </div>
+                                                    <div class="ram-ssd d-flex gap-2">
+                                                        <img src="../icons/products-card-details/ram.svg" alt="ram">
+                                                        <span>32GB</span>
+                                                        <img src="../icons/products-card-details/ssd.svg" alt="ssd">
+                                                        <span>1TB</span>
+                                                    </div>
+                                                    <div class="screensize d-flex gap-2">
+                                                        <img src="../icons/products-card-details/screensize.svg" alt="screensize">
+                                                        <span>14.5" 2.8K / OLED / 120Hz</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="btn rounded-3 d-flex align-items-center end-0">
+                                                <span class="mx-auto">Add To Basket</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                            </div>
+                        </div>
+                        <div id="tab3" class="tab-content"></div>
+                        <div id="tab4" class="tab-content"></div>
+                        <div id="tab5" class="tab-content"></div>
+                    </div>
+                </div>
+                    
         </main>
         <!-- MAIN.CSS FOOTER -->
         <footer>
