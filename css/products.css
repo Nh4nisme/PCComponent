@@ -151,6 +151,9 @@
     opacity: 70%;
 }
 
+/* css cho category-offer */
+
+
 /* Ẩn sidebar khi thu phóng 150% */
 @media (max-width: 1000px) {
     .sidebar-menu {

@@ -445,18 +445,125 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+// js chung cho tabpanel và hiển thị các offer
+document.addEventListener('DOMContentLoaded', function () {
+    readJson('pc', 'bot-category-offer');
+    readJson('monitor', 'bot-category-offer-monitors');
 
-// js của cái tab panel dm
+    let firstTab = document.querySelector('.tab-btn');  
+    if (firstTab) {
+        firstTab.click();
+    }
+});
+
 function openTab(event, tabId) {
-    // Ẩn tất cả tab-content
     document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-
-    // Bỏ active của tất cả các tab button
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
 
-    // Hiển thị tab được chọn
     document.getElementById(tabId).classList.add('active');
-
-    // Thêm class active vào nút được chọn
     event.currentTarget.classList.add('active');
+
+    fetchDataToTab(tabId);
+}
+
+function fetchDataToTab(tabId) {
+    console.log("Loading data for tab:", tabId);
+    $.getJSON('../json/products.json', function (data) {
+        if (!data.laptop) {
+            console.error('Không tìm thấy danh mục laptop trong JSON!');
+            return;
+        }
+
+        let categoryMap = {
+            'GAMING': data.laptop.gaming,
+            'AI': data.laptop.ai,
+            'OFFICE': data.laptop.office,
+            'STUDENT': data.laptop.student,
+            'GRAPHICS': data.laptop.graphics
+        };
+
+        let products = categoryMap[tabId] || [];
+        let container = $(`#${tabId} .products-tab-content`);
+
+        if (container.length) {
+            container.empty();
+
+            let index = 0;
+            function updateProducts() {
+                let currentProducts = products.slice(index, index + 5);
+                container.html(currentProducts.map(createHTML).join(''));
+
+                container.find('.product').hide().fadeIn(1000);
+
+                index = (index + 5) % products.length;
+            }
+
+            updateProducts();
+            setInterval(updateProducts, 7000);
+        } else {
+            console.error(`Không tìm thấy phần tử #${tabId} .products-tab-content`);
+        }
+    }).fail(error => console.error('Lỗi đọc file:', error));
+}
+
+function readJson(category, containerId) {
+    fetch('../json/products.json')
+        .then(response => response.json())
+        .then(data => {
+            if (!data[category]) {
+                console.error(`Danh mục ${category} không tồn tại trong JSON!`);
+                return;
+            }
+
+            let container = document.getElementById(containerId);
+            if (container) {
+                container.innerHTML = data[category].slice(0, 5).map(createHTML).join('');
+            } else {
+                console.error(`Không tìm thấy phần tử ${containerId}!`);
+            }
+        })
+        .catch(error => console.error('Lỗi khi đọc JSON:', error));
+}
+
+function createHTML(product) {
+    return `
+                                <div class="product col">
+                                    <div class="card products-tab-content-card shadow h-100 border-0 rounded-4">
+                                        <img src="${product.img}" class="card-img-top p-2" alt="${product.description}">
+                                        <div class="card-body d-flex flex-column justify-content-between" style="font-size: 14px;">
+                                            <div class="mb-5">
+                                                <h6 class="card-title fw-bold mb-0">${product.title}</h6>
+                                                <p class="card-text mb-0">${product.description}</p>
+                                                <div class="">
+                                                    <span class="fw-semibold">${product.price}</span>
+                                                    <del class="text-secondary fw-normal">${product.oldPrice}</del>
+                                                </div>
+                                                <div class="products-card-details d-flex flex-column rounded-4 p-2" style="font-size: 11px;">
+                                                    <div class="cpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/badge.svg" alt="cpu">
+                                                        <span>${product.cpu}</span>
+                                                    </div>
+                                                    <div class="gpu d-flex gap-2">
+                                                        <img src="../icons/products-card-details/gpu.svg" alt="gpu">
+                                                        <span>${product.gpu}</span>
+                                                    </div>
+                                                    <div class="ram-ssd d-flex gap-2">
+                                                        <img src="../icons/products-card-details/ram.svg" alt="ram">
+                                                        <span>${product.ram}</span>
+                                                        <img src="../icons/products-card-details/ssd.svg" alt="ssd">
+                                                        <span>${product.ssd}</span>
+                                                    </div>
+                                                    <div class="screensize d-flex gap-2">
+                                                        <img src="../icons/products-card-details/screensize.svg" alt="screensize">
+                                                        <span>${product.screen}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="btn rounded-3 d-flex align-items-center end-0">
+                                                <span class="mx-auto">Add To Basket</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+    `;
 }
