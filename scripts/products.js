@@ -449,6 +449,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function () {
     readJson('pc', 'bot-category-offer');
     readJson('monitor', 'bot-category-offer-monitors');
+    readJson('pc', 'feature-products');
 
     let firstTab = document.querySelector('.tab-btn');  
     if (firstTab) {
@@ -509,17 +510,27 @@ function fetchDataToTab(tabId) {
 function readJson(category, containerId) {
     fetch('../json/products.json')
         .then(response => response.json())
-        .then(data => {
+        .then(data => {   
+
             if (!data[category]) {
                 console.error(`Danh mục ${category} không tồn tại trong JSON!`);
                 return;
             }
 
             let container = document.getElementById(containerId);
-            if (container) {
-                container.innerHTML = data[category].slice(0, 5).map(createHTML).join('');
-            } else {
+            if (!container) {
                 console.error(`Không tìm thấy phần tử ${containerId}!`);
+            }
+
+            let items = data[category];
+            if(typeof items === 'object' && !Array.isArray(items)) {
+                items = Object.values(items);
+            }
+        
+            if(Array.isArray(items)) {
+                container.innerHTML = items.slice(0, 5).map(createHTML).join('');
+            } else {
+                console.error("Du lieu khong hop le");
             }
         })
         .catch(error => console.error('Lỗi khi đọc JSON:', error));
