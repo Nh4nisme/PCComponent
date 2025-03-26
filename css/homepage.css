@@ -9,7 +9,7 @@
 }
 
 .card:hover img {
-    transform: translateY(-10px);
+    transform: scale(1.1);
 }
 
 .card:hover .card-text {

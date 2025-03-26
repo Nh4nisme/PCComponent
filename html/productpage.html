@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/filter.css">
+    <title>PC Components</title>
+</head>
+<body class = "master-container-neon-red">
+    <!-- MAIN.CSS HEADER -->
+    
+    <div id="header-placeholder"></div>
+    <!-- END OF MAIN.CSS HEADER -->
+    <main>
+        <button class="btn btn-sm btn-outline-secondary sidebar-toggle" id="sidebarToggle">
+            <span id="toggleIcon">&#9664;</span>
+        </button>
+        
+        <div class="sidebar" id="filterSidebar">
+            <!-- Price Filter -->
+            <div class="filter-title" onclick="toggleSection('priceFilter')">
+                <span>Price</span>
+                <img class="dropdown-icon" src="../icons/filter/down.svg" alt="">
+            </div>
+            <div class="filter-content filter-expanded" id="priceFilter">
+                <div class="price-range">
+                    <div class="d-flex justify-content-between small text-muted mb-2">
+                        <span id="minPriceLabel">$0</span>
+                        <span id="maxPriceLabel">$10,000</span>
+                    </div>
+                    <div class="position-relative">
+                        <input type="range" class="form-range range-slider" min="0" max="10000" step="100" id="minPrice">
+                        <input type="range" class="form-range range-slider" min="0" max="10000" step="100" id="maxPrice">
+                        <div class="range-highlight"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PC Segment Filter -->
+            <div class="filter-section">
+                <div class="filter-title" onclick="toggleSection('pcSegmentFilter')">
+                    <span>PC segment</span>
+                    <img class="dropdown-icon" src="../icons/filter/down.svg" alt="">
+                </div>
+                <div class="filter-content filter-expanded" id="pcSegmentFilter">
+                    <div class="checkbox-item">
+                        <input class="form-check-input modified-checbox" type="checkbox" id="pcAI">
+                        <label class="form-check-label" for="pcAI">PC AI</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input class="form-check-input modified-checbox" type="checkbox" id="pcGaming">
+                        <label class="form-check-label" for="pcGaming">PC Gaming</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input class="form-check-input modified-checbox" type="checkbox" id="miniPC">
+                        <label class="form-check-label" for="miniPC">Mini PC</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input class="form-check-input modified-checbox" type="checkbox" id="officePC">
+                        <label class="form-check-label" for="officePC">Office PC</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CPU Series Filter -->
+            <div class="filter-section">
+                <div class="filter-title" onclick="toggleSection('cpuSeriesFilter')">
+                    <span>CPU Series</span>
+                    <img class="dropdown-icon" src="../icons/filter/down.svg" alt="">
+                </div>
+                <div class="filter-content filter-expanded" id="cpuSeriesFilter">
+                    <div class="checkbox-item">
+                        <input class="form-check-input modified-checbox" type="checkbox" id="intelI7">
+                        <label class="form-check-label" for="intelI7">Intel Core i7</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input class="form-check-input modified-checbox" type="checkbox" id="intelI5">
+                        <label class="form-check-label" for="intelI5">Intel Core i5</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input class="form-check-input modified-checbox" type="checkbox" id="amdRyzen5">
+                        <label class="form-check-label" for="amdRyzen5">AMD Ryzen 5</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Graphics Filter -->
+            <div class="filter-section">
+                <div class="filter-title" onclick="toggleSection('graphicsFilter')">
+                    <span>Discrete Graphics</span>
+                    <img class="dropdown-icon" src="../icons/filter/down.svg" alt="">
+                </div>
+                <div class="filter-content filter-expanded" id="graphicsFilter">
+                    <div class="checkbox-item">
+                        <input class="form-check-input modified-checbox" type="checkbox" id="rtx3060">
+                        <label class="form-check-label" for="rtx3060">GeForce RTX™ 3060</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input class="form-check-input modified-checbox" type="checkbox" id="rtx4060">
+                        <label class="form-check-label" for="rtx4060">GeForce RTX™ 4060</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input class="form-check-input modified-checbox" type="checkbox" id="rtx5060">
+                        <label class="form-check-label" for="rtx5060">GeForce RTX™ 5060</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RAM Filter -->
+            <div class="filter-section">
+                <div class="filter-title" onclick="toggleSection('ramFilter')">
+                    <span>Ram Capacity</span>
+                    <img class="dropdown-icon" src="../icons/filter/down.svg" alt="">
+                </div>
+                <div class="filter-content filter-expanded" id="ramFilter">
+                    <div class="checkbox-item">
+                        <input class="form-check-input modified-checbox" type="checkbox" id="ram128">
+                        <label class="form-check-label" for="ram128">128GB</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input class="form-check-input modified-checbox" type="checkbox" id="ram64">
+                        <label class="form-check-label" for="ram64">64GB</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input class="form-check-input modified-checbox" type="checkbox" id="ram32">
+                        <label class="form-check-label" for="ram32">32GB</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input class="form-check-input modified-checbox" type="checkbox" id="ram16">
+                        <label class="form-check-label" for="ram16">16GB</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SSD Filter -->
+            <div class="filter-section">
+                <div class="filter-title" onclick="toggleSection('ssdFilter')">
+                    <span>SSD Capacity</span>
+                    <img class="dropdown-icon" src="../icons/filter/down.svg" alt="">
+                </div>
+                <div class="filter-content filter-expanded" id="ssdFilter">
+                    <!-- SSD options would go here -->
+                </div>
+            </div>
+            
+            <!-- HDD Filter -->
+            <div class="filter-section">
+                <div class="filter-title" onclick="toggleSection('hddFilter')">
+                    <span>HDD Capacity</span>
+                    <img class="dropdown-icon" src="../icons/filter/down.svg" alt="">
+                </div>
+                <div class="filter-content filter-expanded" id="hddFilter">
+                    <!-- HDD options would go here -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content" id="mainContent">
+            <div class="container">
+                <div class="row mb-3">
+                    <ul class="list-group list-group-horizontal align-items-center sortbar flex-wrap">
+                        <li class="list-group-item border-0 fs-6 fs-md-5">Sort by:</li>
+                        <li class="list-group-item border-0 p-0"><button id="sort-promotions" class="btn btn-light fs-6 fs-sm-7 fs-md-6">Best promotions</button></li>
+                        <li class="list-group-item border-0 p-0"><button id="sort-price-asc" class="btn btn-light fs-6 fs-sm-7 fs-md-6">Price ascending</button></li>
+                        <li class="list-group-item border-0 p-0"><button id="sort-price-desc" class="btn btn-light fs-6 fs-sm-7 fs-md-6">Price descending</button></li>
+                        <li class="list-group-item border-0 p-0"><button id="sort-new" class="btn btn-light fs-6 fs-sm-7 fs-md-6">New products</button></li>
+                        <li class="list-group-item border-0 p-0"><button id="sort-bestselling" class="btn btn-light fs-6 fs-sm-7 fs-md-6">Best-selling products</button></li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 main-panel">
+                        <!-- First page -->
+                        <div class = "product-grid active" id = "page-1">
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0 h-100 d-flex flex-column">
+                                        <div class="card-body m-0">
+                                            <img src="../images/filter/auros-case.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">PC GVN x AORUS XTREME ICE (Intel i9-14900K/ VGA RTX 4080 Super)</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$2000</span>
+                                                <span class="text-muted text-decoration-line-through">$2500</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0">
+                                        <div class="card-body m-0 h-100 d-flex flex-column">
+                                            <img src="../images/filter/auros-case.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">PC GVN x AORUS XTREME ICE (Intel i9-14900K/ VGA RTX 4080 Super)</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$2000</span>
+                                                <span class="text-muted text-decoration-line-through">$2500</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0">
+                                        <div class="card-body m-0 h-100 d-flex flex-column">
+                                            <img src="../images/filter/auros-case.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">PC GVN x AORUS XTREME ICE (Intel i9-14900K/ VGA RTX 4080 Super)</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$2000</span>
+                                                <span class="text-muted text-decoration-line-through">$2500</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0">
+                                        <div class="card-body m-0 h-100 d-flex flex-column">
+                                            <img src="../images/filter/rog-strix.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">Laptop gaming ASUS ROG Strix SCAR 16 G634JYR RA132W</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$1599</span>
+                                                <span class="text-muted text-decoration-line-through">1899$</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0">
+                                        <div class="card-body m-0">
+                                            <img src="../images/filter/rog-strix.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">Laptop gaming ASUS ROG Strix SCAR 16 G634JYR RA132W</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$1599</span>
+                                                <span class="text-muted text-decoration-line-through">1899$</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0">
+                                        <div class="card-body m-0">
+                                            <img src="../images/filter/rog-strix.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">Laptop gaming ASUS ROG Strix SCAR 16 G634JYR RA132W</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$1599</span>
+                                                <span class="text-muted text-decoration-line-through">1899$</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0">
+                                        <div class="card-body m-0">
+                                            <img src="../images/filter/rog-strix.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">Laptop gaming ASUS ROG Strix SCAR 16 G634JYR RA132W</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$1599</span>
+                                                <span class="text-muted text-decoration-line-through">1899$</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0">
+                                        <div class="card-body m-0">
+                                            <img src="../images/filter/rog-strix.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">Laptop gaming ASUS ROG Strix SCAR 16 G634JYR RA132W</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$1599</span>
+                                                <span class="text-muted text-decoration-line-through">1899$</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0">
+                                        <div class="card-body m-0">
+                                            <img src="../images/filter/rog-strix.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">Laptop gaming ASUS ROG Strix SCAR 16 G634JYR RA132W</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$1599</span>
+                                                <span class="text-muted text-decoration-line-through">1899$</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0">
+                                        <div class="card-body m-0">
+                                            <img src="../images/filter/rog-strix.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">Laptop gaming ASUS ROG Strix SCAR 16 G634JYR RA132W</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$1599</span>
+                                                <span class="text-muted text-decoration-line-through">1899$</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0">
+                                        <div class="card-body m-0">
+                                            <img src="../images/filter/rog-strix.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">Laptop gaming ASUS ROG Strix SCAR 16 G634JYR RA132W</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$1599</span>
+                                                <span class="text-muted text-decoration-line-through">1899$</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0">
+                                        <div class="card-body m-0">
+                                            <img src="../images/filter/rog-strix.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">Laptop gaming ASUS ROG Strix SCAR 16 G634JYR RA132W</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$1599</span>
+                                                <span class="text-muted text-decoration-line-through">1899$</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0">
+                                        <div class="card-body m-0">
+                                            <img src="../images/filter/lenovo-legion.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">Gaming laptop Lenovo Legion Pro 7 16IRX9H - 83DE001MVN</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$2399</span>
+                                                <span class="text-muted text-decoration-line-through">2799$</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0">
+                                        <div class="card-body m-0">
+                                            <img src="../images/filter/lenovo-legion.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">Gaming laptop Lenovo Legion Pro 7 16IRX9H - 83DE001MVN</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$2399</span>
+                                                <span class="text-muted text-decoration-line-through">2799$</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0">
+                                        <div class="card-body m-0">
+                                            <img src="../images/filter/lenovo-legion.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">Gaming laptop Lenovo Legion Pro 7 16IRX9H - 83DE001MVN</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$2399</span>
+                                                <span class="text-muted text-decoration-line-through">2799$</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0">
+                                        <div class="card-body m-0">
+                                            <img src="../images/filter/lenovo-legion.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">Gaming laptop Lenovo Legion Pro 7 16IRX9H - 83DE001MVN</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$2399</span>
+                                                <span class="text-muted text-decoration-line-through">2799$</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        
+
+                        </div>
+                        <!-- second page-->
+                        <div class = "product-grid" id = "page-2">
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0 h-100 d-flex flex-column">
+                                        <div class="card-body m-0">
+                                            <img src="../images/filter/rtx-5070.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">GIGABYTE GeForce RTX 5070 Ti AERO OC 16G 16GB GDDR7 Video Card (GV-N507TAERO OC-16GD)</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$700</span>
+                                                <span class="text-muted text-decoration-line-through">$900</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0 h-100 d-flex flex-column">
+                                        <div class="card-body m-0">
+                                            <img src="../images/filter/rtx-5070.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">GIGABYTE GeForce RTX 5070 Ti AERO OC 16G 16GB GDDR7 Video Card (GV-N507TAERO OC-16GD)</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$700</span>
+                                                <span class="text-muted text-decoration-line-through">$900</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0 h-100 d-flex flex-column">
+                                        <div class="card-body m-0">
+                                            <img src="../images/filter/rtx-5070.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">GIGABYTE GeForce RTX 5070 Ti AERO OC 16G 16GB GDDR7 Video Card (GV-N507TAERO OC-16GD)</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$700</span>
+                                                <span class="text-muted text-decoration-line-through">$900</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-0">
+                                    <div class="card p-0 h-100 d-flex flex-column">
+                                        <div class="card-body m-0">
+                                            <img src="../images/filter/rtx-5070.png" alt="" class="w-100 mb-3">
+                                            <p class="card-text">GIGABYTE GeForce RTX 5070 Ti AERO OC 16G 16GB GDDR7 Video Card (GV-N507TAERO OC-16GD)</p>
+                                            <p class="card-text">
+                                                <span class="product-price fw-bold pe-2">$700</span>
+                                                <span class="text-muted text-decoration-line-through">$900</span>
+                                            </p>
+                                            <button class="btn btn-shopping d-flex align-items-center w-100 position-relative">
+                                                <span class="mx-auto">Add To Basket</span>
+                                                <img src="../icons/transactional/shopping-cart.svg" alt="" class="position-absolute end-0">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination-container">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous" id="prev-page">
+                                    <span aria-hidden="true">&lang;</span>
+                                </a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#" data-page="1">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#" data-page="2">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#" data-page="3">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next" id="next-page">
+                                    <span aria-hidden="true">&rang;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            
+            </div>
+        </div>
+    </main>
+    <!-- MAIN.CSS FOOTER -->
+    <div id="footer-placeholder"></div>
+    
+    <!-- END OF MAIN.CSS FOOTER -->
+    <!-- <script src="../scripts/animated-searchbar.js"></script> -->
+     <script src="../script/filter.js"></script>
+    <script src="../script/homepage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
